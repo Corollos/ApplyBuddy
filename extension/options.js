@@ -22,7 +22,9 @@ const fields = [
 
   "workAuthorization",
   "requireSponsorship",
-  "willingToRelocate"
+  "willingToRelocate",
+
+  "gender"
 ];
 
 // Load the saved profile when the page opens.

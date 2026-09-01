@@ -19,7 +19,8 @@
     "graduationDate",
     "workAuthorization",
     "requireSponsorship",
-    "willingToRelocate"
+    "willingToRelocate",
+    "gender"
   ];
 
   const profile = await chrome.storage.local.get(profileFields);
@@ -64,6 +65,15 @@
   }
 
   function detectProfileField(context) {
+    // Gender
+    if (
+      context.includes("gender identity") ||
+      context.includes("gender")
+    ) {
+      return "gender";
+    }
+
+    // Name
     if (
       context.includes("first name") ||
       context.includes("firstname") ||
@@ -88,6 +98,7 @@
       return "lastName";
     }
 
+    // Contact
     if (
       context.includes("email") ||
       context.includes("e-mail")
@@ -103,6 +114,7 @@
       return "phone";
     }
 
+    // Address
     if (
       context.includes("street address") ||
       context.includes("address line 1") ||
@@ -139,6 +151,7 @@
       return "country";
     }
 
+    // Professional links
     if (context.includes("linkedin")) {
       return "linkedin";
     }
@@ -155,6 +168,7 @@
       return "portfolio";
     }
 
+    // Education
     if (
       context.includes("school") ||
       context.includes("university") ||
@@ -287,7 +301,7 @@
     }
   });
 
-  // Application question radio buttons.
+  // Application questions, including radio-button groups.
   const applicationQuestions = {
     workAuthorization: [
       "legally authorized",
@@ -307,6 +321,11 @@
       "willing to relocate",
       "willingness to relocate",
       "open to relocation"
+    ],
+
+    gender: [
+      "gender",
+      "gender identity"
     ]
   };
 
