@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ApplyBuddy Profile</title>
+
+  <style>
+    body {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 35px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 8px;
+    }
+
+    .field {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 12px 20px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    #status {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>ApplyBuddy Profile</h1>
+
+  <p>
+    Your information is stored locally in your browser and is used only to help fill application forms.
+  </p>
+
+  <h2>Personal Information</h2>
+
+  <div class="field">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName">
+  </div>
+
+  <div class="field">
+    <label for="middleName">Middle Name</label>
+    <input type="text" id="middleName">
+  </div>
+
+  <div class="field">
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName">
+  </div>
+
+  <div class="field">
+    <label for="email">Email Address</label>
+    <input type="email" id="email">
+  </div>
+
+  <div class="field">
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone">
+  </div>
+
+  <h2>Address</h2>
+
+  <div class="field">
+    <label for="address">Street Address</label>
+    <input type="text" id="address">
+  </div>
+
+  <div class="field">
+    <label for="city">City</label>
+    <input type="text" id="city">
+  </div>
+
+  <div class="field">
+    <label for="state">State</label>
+    <input type="text" id="state">
+  </div>
+
+  <div class="field">
+    <label for="zipCode">ZIP / Postal Code</label>
+    <input type="text" id="zipCode">
+  </div>
+
+  <div class="field">
+    <label for="country">Country</label>
+    <input type="text" id="country">
+  </div>
+
+  <h2>Professional Links</h2>
+
+  <div class="field">
+    <label for="linkedin">LinkedIn URL</label>
+    <input type="url" id="linkedin">
+  </div>
+
+  <div class="field">
+    <label for="github">GitHub URL</label>
+    <input type="url" id="github">
+  </div>
+
+  <div class="field">
+    <label for="portfolio">Portfolio / Website</label>
+    <input type="url" id="portfolio">
+  </div>
+
+  <h2>Education</h2>
+
+  <div class="field">
+    <label for="school">School / University</label>
+    <input type="text" id="school">
+  </div>
+
+  <div class="field">
+    <label for="degree">Degree</label>
+    <input type="text" id="degree">
+  </div>
+
+  <div class="field">
+    <label for="major">Major / Field of Study</label>
+    <input type="text" id="major">
+  </div>
+
+  <div class="field">
+    <label for="graduationDate">Expected Graduation Date</label>
+    <input type="text" id="graduationDate" placeholder="May 2027">
+  </div>
+
+  <br>
+
+  <button id="saveButton">Save Profile</button>
+  <span id="status"></span>
+
+  <script src="options.js"></script>
+
+</body>
+</html>
