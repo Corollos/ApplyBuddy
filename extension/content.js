@@ -16,7 +16,10 @@
     "school",
     "degree",
     "major",
-    "graduationDate"
+    "graduationDate",
+    "workAuthorization",
+    "requireSponsorship",
+    "willingToRelocate"
   ];
 
   const profile = await chrome.storage.local.get(profileFields);
@@ -36,7 +39,6 @@
       field.getAttribute("autocomplete")
     ];
 
-    // Get the label directly connected to this field.
     if (field.id) {
       const label = document.querySelector(
         `label[for="${CSS.escape(field.id)}"]`
@@ -47,7 +49,6 @@
       }
     }
 
-    // Handle inputs placed inside labels.
     const parentLabel = field.closest("label");
 
     if (parentLabel) {
@@ -61,7 +62,6 @@
   }
 
   function detectProfileField(context) {
-    // Name fields
     if (
       context.includes("first name") ||
       context.includes("firstname") ||
@@ -87,7 +87,6 @@
       return "lastName";
     }
 
-    // Contact information
     if (
       context.includes("email") ||
       context.includes("e-mail")
@@ -103,7 +102,6 @@
       return "phone";
     }
 
-    // Address
     if (
       context.includes("street address") ||
       context.includes("address line 1") ||
@@ -136,13 +134,10 @@
       return "zipCode";
     }
 
-    if (
-      context.includes("country")
-    ) {
+    if (context.includes("country")) {
       return "country";
     }
 
-    // Professional links
     if (context.includes("linkedin")) {
       return "linkedin";
     }
@@ -159,7 +154,6 @@
       return "portfolio";
     }
 
-    // Education
     if (
       context.includes("school") ||
       context.includes("university") ||
@@ -169,9 +163,7 @@
       return "school";
     }
 
-    if (
-      context.includes("degree")
-    ) {
+    if (context.includes("degree")) {
       return "degree";
     }
 
@@ -195,15 +187,12 @@
   }
 
   function setFieldValue(field, value) {
-    // Do not overwrite information already entered by the user.
     if (field.value && field.value.trim() !== "") {
       return false;
     }
 
     field.focus();
 
-    // Use the native setter when possible so frameworks such as React
-    // detect the value change properly.
     const prototype =
       field instanceof HTMLTextAreaElement
         ? HTMLTextAreaElement.prototype
@@ -238,6 +227,13 @@
   }
 
   inputs.forEach((field) => {
+    if (
+      field.type === "radio" ||
+      field.type === "checkbox"
+    ) {
+      return;
+    }
+
     const context = getFieldContext(field);
     const profileKey = detectProfileField(context);
 

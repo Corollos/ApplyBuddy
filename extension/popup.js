@@ -8,7 +8,7 @@ settingsButton.addEventListener("click", () => {
 
 autofillButton.addEventListener("click", async () => {
   try {
-    status.textContent = "Checking profile...";
+    status.textContent = "Auto-filling...";
 
     const [tab] = await chrome.tabs.query({
       active: true,
@@ -21,13 +21,15 @@ autofillButton.addEventListener("click", async () => {
     }
 
     await chrome.scripting.executeScript({
-      target: { tabId: tab.id },
+      target: {
+        tabId: tab.id
+      },
       files: ["content.js"]
     });
 
     status.textContent = "Auto-fill complete!";
   } catch (error) {
-    console.error("ApplyBuddy error:", error);
+    console.error("[ApplyBuddy] Error:", error);
     status.textContent = "Could not run on this page.";
   }
 });

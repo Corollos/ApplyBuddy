@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
   <meta charset="UTF-8">
@@ -32,7 +33,8 @@
       font-weight: bold;
     }
 
-    input {
+    input,
+    select {
       width: 100%;
       padding: 10px;
       box-sizing: border-box;
@@ -48,6 +50,7 @@
       margin-left: 10px;
     }
   </style>
+
 </head>
 
 <body>
@@ -151,10 +154,56 @@
     <input type="text" id="graduationDate" placeholder="May 2027">
   </div>
 
+  <h2>Application Preferences</h2>
+
+  <div class="field">
+    <label for="workAuthorization">
+      Are you legally authorized to work in the United States?
+    </label>
+
+```
+<select id="workAuthorization">
+  <option value="">Prefer not to auto-fill</option>
+  <option value="yes">Yes</option>
+  <option value="no">No</option>
+</select>
+```
+
+  </div>
+
+  <div class="field">
+    <label for="requireSponsorship">
+      Will you now or in the future require visa sponsorship?
+    </label>
+
+```
+<select id="requireSponsorship">
+  <option value="">Prefer not to auto-fill</option>
+  <option value="yes">Yes</option>
+  <option value="no">No</option>
+</select>
+```
+
+  </div>
+
+  <div class="field">
+    <label for="willingToRelocate">
+      Are you willing to relocate?
+    </label>
+
+```
+<select id="willingToRelocate">
+  <option value="">Prefer not to auto-fill</option>
+  <option value="yes">Yes</option>
+  <option value="no">No</option>
+</select>
+```
+
+  </div>
+
   <br>
 
-  <button id="saveButton">Save Profile</button>
-  <span id="status"></span>
+<button id="saveButton">Save Profile</button> <span id="status"></span>
 
   <script src="options.js"></script>
 

@@ -18,7 +18,11 @@ const fields = [
   "school",
   "degree",
   "major",
-  "graduationDate"
+  "graduationDate",
+
+  "workAuthorization",
+  "requireSponsorship",
+  "willingToRelocate"
 ];
 
 // Load the saved profile when the page opens.
@@ -28,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   fields.forEach((field) => {
     const input = document.getElementById(field);
 
-    if (input && profile[field]) {
+    if (input && profile[field] !== undefined) {
       input.value = profile[field];
     }
   });

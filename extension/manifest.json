@@ -1,12 +1,12 @@
 {
   "manifest_version": 3,
   "name": "ApplyBuddy",
-  "version": "1.0.0",
-  "description": "A free Chrome extension that helps automate job and internship application form filling.",
+  "version": "1.0.1",
+  "description": "A free browser extension that helps fill job and internship application forms without submitting them.",
   "permissions": [
+    "storage",
     "activeTab",
-    "scripting",
-    "storage"
+    "scripting"
   ],
   "action": {
     "default_popup": "popup.html",

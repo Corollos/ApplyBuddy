@@ -1,40 +1,267 @@
 <!DOCTYPE html>
+
 <html>
 <head>
   <meta charset="UTF-8">
   <title>ApplyBuddy Test Form</title>
+
+  <style>
+    body {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .choice-group {
+      margin-top: 10px;
+    }
+
+    .choice-group label {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 20px;
+      font-weight: normal;
+      cursor: pointer;
+    }
+
+    .choice-group input {
+      width: auto;
+      margin-right: 6px;
+    }
+  </style>
+
 </head>
 
 <body>
+
   <h1>ApplyBuddy Test Form</h1>
 
-  <label for="firstName">First Name</label>
-  <input type="text" id="firstName">
+  <p>Use this page to test the ApplyBuddy autofill extension.</p>
 
-  <br><br>
+  <h2>Personal Information</h2>
 
-  <label for="lastName">Last Name</label>
-  <input type="text" id="lastName">
+  <div class="field">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName">
+  </div>
 
-  <br><br>
+  <div class="field">
+    <label for="middleName">Middle Name</label>
+    <input type="text" id="middleName">
+  </div>
 
-  <label for="email">Email Address</label>
-  <input type="email" id="email">
+  <div class="field">
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName">
+  </div>
 
-  <br><br>
+  <div class="field">
+    <label for="email">Email Address</label>
+    <input type="email" id="email">
+  </div>
 
-  <label for="phone">Phone Number</label>
-  <input type="tel" id="phone">
+  <div class="field">
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone">
+  </div>
 
-  <br><br>
+  <h2>Address</h2>
 
-  <label for="linkedin">LinkedIn Profile</label>
-  <input type="url" id="linkedin">
+  <div class="field">
+    <label for="address">Street Address</label>
+    <input type="text" id="address">
+  </div>
 
-  <br><br>
+  <div class="field">
+    <label for="city">City</label>
+    <input type="text" id="city">
+  </div>
 
-  <label for="github">GitHub Profile</label>
-  <input type="url" id="github">
+  <div class="field">
+    <label for="state">State</label>
+    <select id="state">
+      <option value="">Select a state</option>
+      <option value="Alabama">Alabama</option>
+      <option value="California">California</option>
+      <option value="Florida">Florida</option>
+      <option value="New Jersey">New Jersey</option>
+      <option value="New York">New York</option>
+      <option value="Texas">Texas</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="zipCode">ZIP / Postal Code</label>
+    <input type="text" id="zipCode">
+  </div>
+
+  <div class="field">
+    <label for="country">Country</label>
+    <select id="country">
+      <option value="">Select a country</option>
+      <option value="Canada">Canada</option>
+      <option value="United Kingdom">United Kingdom</option>
+      <option value="United States">United States</option>
+    </select>
+  </div>
+
+  <h2>Professional Links</h2>
+
+  <div class="field">
+    <label for="linkedin">LinkedIn Profile</label>
+    <input type="url" id="linkedin">
+  </div>
+
+  <div class="field">
+    <label for="github">GitHub Profile</label>
+    <input type="url" id="github">
+  </div>
+
+  <div class="field">
+    <label for="portfolio">Portfolio / Website</label>
+    <input type="url" id="portfolio">
+  </div>
+
+  <h2>Education</h2>
+
+  <div class="field">
+    <label for="school">School / University</label>
+    <input type="text" id="school">
+  </div>
+
+  <div class="field">
+    <label for="degree">Degree</label>
+    <select id="degree">
+      <option value="">Select a degree</option>
+      <option value="High School Diploma">High School Diploma</option>
+      <option value="Associate's Degree">Associate's Degree</option>
+      <option value="Bachelor's Degree">Bachelor's Degree</option>
+      <option value="Master's Degree">Master's Degree</option>
+      <option value="Doctorate">Doctorate</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="major">Major / Field of Study</label>
+    <input type="text" id="major">
+  </div>
+
+  <div class="field">
+    <label for="graduationDate">Expected Graduation Date</label>
+    <input type="text" id="graduationDate">
+  </div>
+
+  <h2>Application Questions</h2>
+
+  <fieldset class="field">
+    <legend>
+      Are you legally authorized to work in the United States?
+    </legend>
+
+```
+<div class="choice-group">
+  <label>
+    <input
+      type="radio"
+      name="workAuthorization"
+      value="yes"
+    >
+    Yes
+  </label>
+
+  <label>
+    <input
+      type="radio"
+      name="workAuthorization"
+      value="no"
+    >
+    No
+  </label>
+</div>
+```
+
+  </fieldset>
+
+  <fieldset class="field">
+    <legend>
+      Will you now or in the future require visa sponsorship?
+    </legend>
+
+```
+<div class="choice-group">
+  <label>
+    <input
+      type="radio"
+      name="requireSponsorship"
+      value="yes"
+    >
+    Yes
+  </label>
+
+  <label>
+    <input
+      type="radio"
+      name="requireSponsorship"
+      value="no"
+    >
+    No
+  </label>
+</div>
+```
+
+  </fieldset>
+
+  <fieldset class="field">
+    <legend>
+      Are you willing to relocate?
+    </legend>
+
+```
+<div class="choice-group">
+  <label>
+    <input
+      type="radio"
+      name="willingToRelocate"
+      value="yes"
+    >
+    Yes
+  </label>
+
+  <label>
+    <input
+      type="radio"
+      name="willingToRelocate"
+      value="no"
+    >
+    No
+  </label>
+</div>
+```
+
+  </fieldset>
 
 </body>
 </html>
