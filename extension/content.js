@@ -26,9 +26,11 @@
 
   let filledCount = 0;
 
-  const inputs = document.querySelectorAll(
-    "input:not([type='hidden']):not([type='submit']):not([type='button']):not([type='file']), textarea"
+  const textInputs = document.querySelectorAll(
+    "input:not([type='hidden']):not([type='submit']):not([type='button']):not([type='file']):not([type='radio']):not([type='checkbox']), textarea"
   );
+
+  const selects = document.querySelectorAll("select");
 
   function getFieldContext(field) {
     const parts = [
@@ -65,8 +67,7 @@
     if (
       context.includes("first name") ||
       context.includes("firstname") ||
-      context.includes("given name") ||
-      context.includes("givenname")
+      context.includes("given name")
     ) {
       return "firstName";
     }
@@ -169,8 +170,7 @@
 
     if (
       context.includes("major") ||
-      context.includes("field of study") ||
-      context.includes("fieldofstudy")
+      context.includes("field of study")
     ) {
       return "major";
     }
@@ -210,15 +210,11 @@
     }
 
     field.dispatchEvent(
-      new Event("input", {
-        bubbles: true
-      })
+      new Event("input", { bubbles: true })
     );
 
     field.dispatchEvent(
-      new Event("change", {
-        bubbles: true
-      })
+      new Event("change", { bubbles: true })
     );
 
     field.blur();
@@ -226,14 +222,45 @@
     return true;
   }
 
-  inputs.forEach((field) => {
-    if (
-      field.type === "radio" ||
-      field.type === "checkbox"
-    ) {
-      return;
+  function setSelectValue(select, value) {
+    const normalizedValue = String(value)
+      .trim()
+      .toLowerCase();
+
+    const option = Array.from(select.options).find((option) => {
+      const optionText = option.textContent
+        .trim()
+        .toLowerCase();
+
+      const optionValue = option.value
+        .trim()
+        .toLowerCase();
+
+      return (
+        optionText === normalizedValue ||
+        optionValue === normalizedValue
+      );
+    });
+
+    if (!option) {
+      return false;
     }
 
+    select.value = option.value;
+
+    select.dispatchEvent(
+      new Event("input", { bubbles: true })
+    );
+
+    select.dispatchEvent(
+      new Event("change", { bubbles: true })
+    );
+
+    return true;
+  }
+
+  // Fill regular text inputs and textareas.
+  textInputs.forEach((field) => {
     const context = getFieldContext(field);
     const profileKey = detectProfileField(context);
 
@@ -243,11 +270,97 @@
 
     if (setFieldValue(field, profile[profileKey])) {
       filledCount++;
-
-      console.log(
-        `[ApplyBuddy] Filled ${profileKey}`
-      );
     }
+  });
+
+  // Fill standard dropdowns.
+  selects.forEach((select) => {
+    const context = getFieldContext(select);
+    const profileKey = detectProfileField(context);
+
+    if (!profileKey || !profile[profileKey]) {
+      return;
+    }
+
+    if (setSelectValue(select, profile[profileKey])) {
+      filledCount++;
+    }
+  });
+
+  // Application question radio buttons.
+  const applicationQuestions = {
+    workAuthorization: [
+      "legally authorized",
+      "authorized to work",
+      "work authorization",
+      "eligible to work"
+    ],
+
+    requireSponsorship: [
+      "visa sponsorship",
+      "require sponsorship",
+      "require visa",
+      "future sponsorship"
+    ],
+
+    willingToRelocate: [
+      "willing to relocate",
+      "willingness to relocate",
+      "open to relocation"
+    ]
+  };
+
+  const fieldsets = document.querySelectorAll("fieldset");
+
+  fieldsets.forEach((fieldset) => {
+    const legend = fieldset.querySelector("legend");
+
+    if (!legend) {
+      return;
+    }
+
+    const questionText = legend.innerText.toLowerCase();
+
+    let profileKey = null;
+
+    for (const [key, keywords] of Object.entries(
+      applicationQuestions
+    )) {
+      if (
+        keywords.some((keyword) =>
+          questionText.includes(keyword)
+        )
+      ) {
+        profileKey = key;
+        break;
+      }
+    }
+
+    if (!profileKey || !profile[profileKey]) {
+      return;
+    }
+
+    const desiredAnswer = String(profile[profileKey])
+      .trim()
+      .toLowerCase();
+
+    const choices = fieldset.querySelectorAll(
+      "input[type='radio']"
+    );
+
+    choices.forEach((choice) => {
+      const choiceValue = String(choice.value)
+        .trim()
+        .toLowerCase();
+
+      if (
+        choiceValue === desiredAnswer &&
+        !choice.checked
+      ) {
+        choice.click();
+        filledCount++;
+      }
+    });
   });
 
   console.log(
