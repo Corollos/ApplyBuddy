@@ -1,56 +1,691 @@
-  <h2>Gender Test</h2>
+<!DOCTYPE html>
 
-  <div class="field">
-    <label for="gender">
-      Gender
-    </label>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Software Engineering Intern Application | ApplyBuddy Careers</title>
 
-```
-<select id="gender" name="gender">
-  <option value="">Select an option</option>
-  <option value="male">Male</option>
-  <option value="female">Female</option>
-  <option value="nonbinary">Non-binary</option>
-  <option value="prefer-not-to-say">Prefer not to say</option>
-</select>
-```
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f7fa;
+      color: #222;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 18px 40px;
+    }
+
+    .brand {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .brand span {
+      color: #60a5fa;
+    }
+
+    .hero {
+      background: white;
+      border-bottom: 1px solid #ddd;
+      padding: 40px;
+    }
+
+    .hero-content {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .job-meta {
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px 50px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 30px;
+    }
+
+    .sidebar h3 {
+      margin-top: 0;
+    }
+
+    h2 {
+      margin-top: 35px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .choice-group {
+      display: flex;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .choice-group label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: normal;
+      cursor: pointer;
+    }
+
+    .choice-group input {
+      width: auto;
+    }
+
+    .submit-section {
+      margin-top: 35px;
+      padding-top: 25px;
+      border-top: 1px solid #ddd;
+    }
+
+    .submit-button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 14px 25px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .notice {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 15px;
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+
+    .required {
+      color: #dc2626;
+    }
+
+    .job-description {
+      line-height: 1.6;
+      color: #444;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e5e7eb;
+      padding: 6px 10px;
+      border-radius: 20px;
+      margin: 4px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+<header>
+  <div class="brand">
+    ApplyBuddy <span>Careers</span>
   </div>
+</header>
 
-  <fieldset class="field">
-    <legend>
-      What is your gender?
-    </legend>
+<section class="hero">
+  <div class="hero-content">
+    <h1>Software Engineering Intern</h1>
 
 ```
-<div class="choice-group">
-  <label>
-    <input
-      type="radio"
-      name="genderRadio"
-      value="male"
-    >
-    Male
-  </label>
-
-  <label>
-    <input
-      type="radio"
-      name="genderRadio"
-      value="female"
-    >
-    Female
-  </label>
-
-  <label>
-    <input
-      type="radio"
-      name="genderRadio"
-      value="nonbinary"
-    >
-    Non-binary
-  </label>
+<div class="job-meta">
+  Engineering • New York, NY • Internship
 </div>
 ```
 
-  </fieldset>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- APPLICATION FORM -->
+
+  <main class="card">
+
+```
+<div class="notice">
+  Complete the application below. Fields marked with
+  <span class="required">*</span> are required.
+</div>
+
+<h2>Personal Information</h2>
+
+<div class="row">
+
+  <div class="field">
+    <label for="firstName">
+      First Name <span class="required">*</span>
+    </label>
+
+    <input
+      type="text"
+      id="firstName"
+      name="firstName"
+      autocomplete="given-name"
+    >
+  </div>
+
+  <div class="field">
+    <label for="lastName">
+      Last Name <span class="required">*</span>
+    </label>
+
+    <input
+      type="text"
+      id="lastName"
+      name="lastName"
+      autocomplete="family-name"
+    >
+  </div>
+
+</div>
+
+<div class="field">
+  <label for="email">
+    Email Address <span class="required">*</span>
+  </label>
+
+  <input
+    type="email"
+    id="email"
+    name="email"
+    autocomplete="email"
+  >
+</div>
+
+<div class="field">
+  <label for="phone">
+    Phone Number
+  </label>
+
+  <input
+    type="tel"
+    id="phone"
+    name="phone"
+    autocomplete="tel"
+  >
+</div>
+
+<h2>Location</h2>
+
+<div class="field">
+  <label for="address">
+    Street Address
+  </label>
+
+  <input
+    type="text"
+    id="address"
+    name="address"
+  >
+</div>
+
+<div class="row">
+
+  <div class="field">
+    <label for="city">
+      City
+    </label>
+
+    <input
+      type="text"
+      id="city"
+      name="city"
+    >
+  </div>
+
+  <div class="field">
+    <label for="state">
+      State / Province
+    </label>
+
+    <select
+      id="state"
+      name="state"
+    >
+      <option value="">
+        Select your state
+      </option>
+
+      <option value="New Jersey">
+        New Jersey
+      </option>
+
+      <option value="New York">
+        New York
+      </option>
+
+      <option value="California">
+        California
+      </option>
+
+      <option value="Texas">
+        Texas
+      </option>
+    </select>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="field">
+    <label for="zipCode">
+      ZIP / Postal Code
+    </label>
+
+    <input
+      type="text"
+      id="zipCode"
+      name="zipCode"
+    >
+  </div>
+
+  <div class="field">
+    <label for="country">
+      Country
+    </label>
+
+    <select
+      id="country"
+      name="country"
+    >
+      <option value="">
+        Select your country
+      </option>
+
+      <option value="United States">
+        United States
+      </option>
+
+      <option value="Canada">
+        Canada
+      </option>
+
+      <option value="United Kingdom">
+        United Kingdom
+      </option>
+    </select>
+  </div>
+
+</div>
+
+<h2>Professional Links</h2>
+
+<div class="field">
+  <label for="linkedin">
+    LinkedIn Profile
+  </label>
+
+  <input
+    type="url"
+    id="linkedin"
+    name="linkedin"
+    placeholder="https://linkedin.com/in/your-profile"
+  >
+</div>
+
+<div class="field">
+  <label for="github">
+    GitHub Profile
+  </label>
+
+  <input
+    type="url"
+    id="github"
+    name="github"
+  >
+</div>
+
+<div class="field">
+  <label for="portfolio">
+    Portfolio Website
+  </label>
+
+  <input
+    type="url"
+    id="portfolio"
+    name="portfolio"
+  >
+</div>
+
+<h2>Education</h2>
+
+<div class="field">
+  <label for="school">
+    School or University
+  </label>
+
+  <input
+    type="text"
+    id="school"
+    name="school"
+  >
+</div>
+
+<div class="row">
+
+  <div class="field">
+    <label for="degree">
+      Degree
+    </label>
+
+    <select
+      id="degree"
+      name="degree"
+    >
+      <option value="">
+        Select degree
+      </option>
+
+      <option value="Associate's Degree">
+        Associate's Degree
+      </option>
+
+      <option value="Bachelor's Degree">
+        Bachelor's Degree
+      </option>
+
+      <option value="Master's Degree">
+        Master's Degree
+      </option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="major">
+      Major / Field of Study
+    </label>
+
+    <input
+      type="text"
+      id="major"
+      name="major"
+    >
+  </div>
+
+</div>
+
+<div class="field">
+  <label for="graduationDate">
+    Expected Graduation Date
+  </label>
+
+  <input
+    type="text"
+    id="graduationDate"
+    name="graduationDate"
+    placeholder="May 2027"
+  >
+</div>
+
+<h2>Work Authorization</h2>
+
+<fieldset class="field">
+
+  <legend>
+    Are you legally authorized to work in the United States?
+  </legend>
+
+  <div class="choice-group">
+
+    <label>
+      <input
+        type="radio"
+        name="workAuthorization"
+        value="yes"
+      >
+      Yes
+    </label>
+
+    <label>
+      <input
+        type="radio"
+        name="workAuthorization"
+        value="no"
+      >
+      No
+    </label>
+
+  </div>
+
+</fieldset>
+
+<fieldset class="field">
+
+  <legend>
+    Will you now or in the future require visa sponsorship?
+  </legend>
+
+  <div class="choice-group">
+
+    <label>
+      <input
+        type="radio"
+        name="requireSponsorship"
+        value="yes"
+      >
+      Yes
+    </label>
+
+    <label>
+      <input
+        type="radio"
+        name="requireSponsorship"
+        value="no"
+      >
+      No
+    </label>
+
+  </div>
+
+</fieldset>
+
+<fieldset class="field">
+
+  <legend>
+    Are you willing to relocate for this position?
+  </legend>
+
+  <div class="choice-group">
+
+    <label>
+      <input
+        type="radio"
+        name="willingToRelocate"
+        value="yes"
+      >
+      Yes
+    </label>
+
+    <label>
+      <input
+        type="radio"
+        name="willingToRelocate"
+        value="no"
+      >
+      No
+    </label>
+
+  </div>
+
+</fieldset>
+
+<h2>Voluntary Self-Identification</h2>
+
+<div class="field">
+
+  <label for="gender">
+    Gender
+  </label>
+
+  <select
+    id="gender"
+    name="gender"
+  >
+    <option value="">
+      Select an option
+    </option>
+
+    <option value="male">
+      Male
+    </option>
+
+    <option value="female">
+      Female
+    </option>
+
+    <option value="non-binary">
+      Non-binary
+    </option>
+
+    <option value="prefer-not-to-say">
+      Prefer not to say
+    </option>
+  </select>
+
+</div>
+
+<h2>Additional Information</h2>
+
+<div class="field">
+
+  <label for="coverLetter">
+    Why are you interested in this opportunity?
+  </label>
+
+  <textarea
+    id="coverLetter"
+    name="coverLetter"
+    placeholder="Tell us why you are interested..."
+  ></textarea>
+
+</div>
+
+<div class="submit-section">
+
+  <p>
+    <strong>Test Mode:</strong>
+    ApplyBuddy should never automatically submit an application.
+  </p>
+
+  <button
+    type="button"
+    class="submit-button"
+  >
+    Submit Application
+  </button>
+
+</div>
+```
+
+  </main>
+
+  <!-- JOB SIDEBAR -->
+
+  <aside class="card sidebar">
+
+```
+<h3>About the Role</h3>
+
+<div class="job-description">
+
+  <p>
+    We are looking for a motivated Software Engineering Intern to join our engineering team.
+  </p>
+
+  <p>
+    You will work on real-world software projects, collaborate with engineers, and help build scalable systems.
+  </p>
+
+</div>
+
+<h3>Skills</h3>
+
+<div>
+
+  <span class="tag">Python</span>
+  <span class="tag">JavaScript</span>
+  <span class="tag">Git</span>
+  <span class="tag">Cybersecurity</span>
+  <span class="tag">APIs</span>
+
+</div>
+
+<h3>Application Status</h3>
+
+<p>
+  Applications are currently being accepted.
+</p>
+```
+
+  </aside>
+
+</div>
+
+</body>
+</html>
